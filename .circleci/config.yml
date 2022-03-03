@@ -42,7 +42,24 @@ jobs:
       - run:
           name: Run linting
           command: flake8
-
+  build-and-push-docker:
+    docker:
+      - image: cimg/python:3.10.2
+        auth:
+          username: marggie
+          password: $DOCKERHUB_PASSWORD
+    steps:
+      - checkout
+      - python/install-packages:
+          pkg-manager: pip
+      - run:
+          name: build
+          command: |
+            python -m venv venv
+            . venv/bin/activate
+            pip install -r requirements.txt
+            docker build --tag oc-lettings:latest .
+            docker run oc-lettings
 
 
 # Invoke jobs via workflows
