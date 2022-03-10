@@ -42,8 +42,27 @@ jobs:
       - run:
           name: Run linting
           command: flake8
+  build-and-push-docker:
+    docker:
+      - image: cimg/python:3.10.2
+        auth:
+          username: marggie
+          password: $DOCKERHUB_PASSWORD
+    steps:
+      - checkout
+      - python/install-packages:
+          pkg-manager: pip
+      - run:
+          name: build
+          command: |
+            python -m venv venv
+            . venv/bin/activate
+            pip install -r requirements.txt
+            docker build --tag oc-lettings:latest .
+            docker run oc-lettings
 
-
+  deploy:
+    - checkout
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
@@ -52,3 +71,7 @@ workflows:
     # Inside the workflow, you define the jobs you want to run.
     jobs:
       - build-and-test
+
+
+
+
