@@ -61,7 +61,7 @@ jobs:
             . venv/bin/activate
             pip install -r requirements.txt
             docker build --tag oc-lettings:latest .
-            docker run oc-lettings
+            docker push oc-lettings:latest
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
