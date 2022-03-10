@@ -61,7 +61,7 @@ jobs:
             . venv/bin/activate
             pip install -r requirements.txt
             docker build --tag oc-lettings:latest .
-            docker login --username:marggie --password:$DOCKERHUB_PASSWORD
+            docker login --username marggie --password:$DOCKERHUB_PASSWORD
             docker tag oc-lettings:latest marggie/oc-lettings:latest
             docker push marggie/oc-lettings:latest
 
