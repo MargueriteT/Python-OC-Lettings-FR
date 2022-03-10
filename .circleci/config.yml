@@ -52,6 +52,8 @@ jobs:
       - checkout
       - python/install-packages:
           pkg-manager: pip
+      - setup_remote_docker:
+            version: 19.03.13
       - run:
           name: build
           command: |
