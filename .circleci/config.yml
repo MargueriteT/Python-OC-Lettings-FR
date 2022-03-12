@@ -66,7 +66,8 @@ jobs:
       - run:
           name: deploy
           command: |
-            sudo curl https://cli-assets.heroku.com/install. sh
+            sudo curl https://cli-assets.heroku.com/install.sh
+            HEROKU_API_KEY = ${HEROKU_TOKEN} heroku login
             HEROKU_API_KEY = ${HEROKU_TOKEN} heroku container:login
             HEROKU_API_KEY = ${HEROKU_TOKEN} heroku container:push -a Python-OC-Lettings-FR web
             HEROKU_API_KEY = ${HEROKU_TOKEN} heroku container:release -a Python-OC-Lettings-FR web
@@ -83,7 +84,6 @@ workflows:
               - build-and-test
       - heroku-deploy:
             requires:
-              - build-and-test
               - build-and-push-docker
 
 
