@@ -81,7 +81,7 @@ workflows:
       - build-and-push-docker:
             requires:
               - build-and-test
-      -heroku-deploy:
+      - heroku-deploy:
             requires:
               - build-and-test
               - build-and-push-docker
