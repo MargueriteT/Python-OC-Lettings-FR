@@ -14,7 +14,7 @@ SECRET_KEY = 'fp$9^593hsriajg$_%=5trot9g!1qa@ew(o-1#@=&4%=hp46(s'
 DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '::1', '0.0.0.0',
-                 'thawing-mountain-41508.herokuapp.com']
+                 'python-oc-lettings-fr.herokuapp.com']
 
 
 # Application definition
