@@ -70,7 +70,7 @@ jobs:
             HEROKU_API_KEY=${HEROKU_TOKEN}  heroku container:login
             docker pull $DOCKERHUB_USERNAME/oc-lettings:latest
             docker tag $DOCKERHUB_USERNAME/oc-lettings:latest registry.heroku.com/python-oc-lettings-fr/web
-            HEROKU_API_KEY=${HEROKU_TOKEN}  heroku container:push --recursive -a registry.heroku.com/python-oc-lettings-fr/web
+            HEROKU_API_KEY=${HEROKU_TOKEN}  heroku container:push -a registry.heroku.com/python-oc-lettings-fr/web
             HEROKU_API_KEY=${HEROKU_TOKEN}  heroku container:release -a registry.heroku.com/python-oc-lettings-fr/web
 
 # Invoke jobs via workflows
