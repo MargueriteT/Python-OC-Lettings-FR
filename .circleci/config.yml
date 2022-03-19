@@ -55,10 +55,10 @@ jobs:
       - run:
           name: build
           command: |
-            docker build --tag oc-lettings:"CIRCLE_SHA1" .
+            docker build --tag oc-lettings:"$CIRCLE_SHA1" .
             docker login --username $DOCKERHUB_USERNAME --password $DOCKERHUB_PASSWORD
-            docker tag oc-lettings:"CIRCLE_SHA1" $DOCKERHUB_USERNAME/oc-lettings:"CIRCLE_SHA1"
-            docker push $DOCKERHUB_USERNAME/oc-lettings:"CIRCLE_SHA1"
+            docker tag oc-lettings:"$CIRCLE_SHA1" $DOCKERHUB_USERNAME/oc-lettings:"$CIRCLE_SHA1"
+            docker push $DOCKERHUB_USERNAME/oc-lettings:"$CIRCLE_SHA1"
   heroku-deploy:
     machine: true
     steps:
